@@ -6,22 +6,8 @@ import { scoreMetrics } from "./scorer";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Allow frontend origin
-const allowedOrigins = [
-  "http://localhost:3000",
-  process.env.FRONTEND_URL ?? "",
-].filter(Boolean);
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin) || allowedOrigins.some(o => origin.startsWith(o))) {
-      callback(null, true);
-    } else {
-      callback(new Error(`CORS: origin ${origin} not allowed`));
-    }
-  },
-}));
-
+// Allow all origins (safe for public tool)
+app.use(cors());
 app.use(express.json());
 
 // Health check
@@ -37,7 +23,6 @@ app.get("/analyze", async (req: Request, res: Response) => {
     return res.status(400).json({ error: "url query param required" });
   }
 
-  // Basic URL validation
   try {
     const normalized = url.startsWith("http") ? url : `https://${url}`;
     new URL(normalized);
