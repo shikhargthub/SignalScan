@@ -1,5 +1,7 @@
 # SignalScan — Fullstack AI Readability Analyzer
 
+Link-(https://signalscan.onrender.com/)
+
 Real website scraping with Playwright. Both frontend and backend deploy on Render.
 
 ## Architecture
@@ -34,34 +36,6 @@ npm run dev
 
 ---
 
-## Deploy on Render
-
-### Step 1 — Deploy Backend (Docker service)
-
-1. Push this repo to GitHub
-2. Go to [render.com](https://render.com) → New → **Web Service**
-3. Connect your GitHub repo
-4. Set **Root Directory** to `backend`
-5. Set **Environment** to `Docker`
-6. Set **Dockerfile Path** to `backend/Dockerfile`
-7. Add environment variable:
-   - `PORT` = `4000`
-8. Click **Deploy**
-9. Copy your backend URL e.g. `https://signalscan-backend.onrender.com`
-
-### Step 2 — Deploy Frontend (Next.js service)
-
-1. Go to Render → New → **Web Service**
-2. Connect same GitHub repo
-3. Set **Root Directory** to `frontend`
-4. Set **Environment** to `Node`
-5. Set **Build Command** to `npm install && npm run build`
-6. Set **Start Command** to `npm start`
-7. Add environment variable:
-   - `NEXT_PUBLIC_BACKEND_URL` = `https://signalscan-backend.onrender.com`
-8. Click **Deploy**
-
----
 
 ## What Gets Measured (Real Data)
 
