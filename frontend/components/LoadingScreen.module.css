@@ -1,0 +1,71 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70dvh;
+  gap: 20px;
+  animation: fadeIn 0.3s ease;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.spinnerWrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+}
+
+.outer {
+  width: 48px; height: 48px;
+  border: 1.5px solid var(--border2);
+  border-top-color: var(--text);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.inner {
+  position: absolute;
+  top: 9px; left: 9px;
+  width: 30px; height: 30px;
+  border: 1px solid transparent;
+  border-top-color: var(--hint);
+  border-radius: 50%;
+  animation: spin 1.4s linear infinite reverse;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.msg {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  min-height: 20px;
+}
+
+.steps {
+  display: flex;
+  gap: 6px;
+}
+
+.step {
+  width: 26px; height: 2px;
+  border-radius: 1px;
+  background: var(--border);
+  transition: background 0.35s;
+}
+
+.step.on { background: var(--text); }
+
+.hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--hint);
+  letter-spacing: 0.05em;
+}
